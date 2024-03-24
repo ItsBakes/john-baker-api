@@ -1,15 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-const {CORS_ORIGIN} = process.env;
 const app = express();
-// require('dotenv').config();
 const PORT = 8080
 const videoRoute = require("./routes/videoRoutes");
+const fs = require("fs");
 
-app.use("/videos", videoRoute )
-app.use(cors({origin:CORS_ORIGIN}))
-app.use(express.json())
-app.use(express.static("public"))
+app.use(cors());
+app.use(express.json());
+app.use("/public/images", express.static("public/images"));
+
+app.use("/videos", videoRoute );
 
 app.listen( PORT , ()=> {
     console.log(`listening on port ${PORT}`)

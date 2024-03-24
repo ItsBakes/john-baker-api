@@ -10,7 +10,7 @@ function readVideos() {
     return parsedData;
 }
 
-router.get('/', (req,res) => {
+router.get('/', (_req,res) => {
     const videos = readVideos();
     const videoInfo = videos.map((video) => {
         return {
