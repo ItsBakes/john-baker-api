@@ -21,3 +21,20 @@ router.get('/video/:videoId', (req,res)=>{
     res.json(singleVid)
 })
 
+router.post("/upload", (req,res) =>{
+    const newVideo = {
+        id: uuid(),
+        title: req.body.title,
+        channel: req.body.channel,
+        description: req.body.description,
+        image: req.body.image,
+        video: req.body.video,
+        timestamp: Date.now(),
+    };
+    const videos = readVideos();
+    videos.push(newVid);
+    fs.writeFileSync("./data/video-details.json", json.stringify(videos));
+    res.status(201).json(newVideo)
+})
+
+module.exports = router;
