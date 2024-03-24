@@ -26,10 +26,14 @@ router.post("/upload", (req,res) =>{
         id: uuid(),
         title: req.body.title,
         channel: req.body.channel,
-        description: req.body.description,
         image: req.body.image,
+        description: req.body.description,
+        views: 0,
+        likes: 0,
+        duration: 0,
         video: req.body.video,
         timestamp: Date.now(),
+        comments:[{}]
     };
     const videos = readVideos();
     videos.push(newVid);
