@@ -15,23 +15,22 @@ router.get('/', (req,res) => {
     res.json(videos)
 });
 
-router.get('/video/:videoId', (req,res)=>{
+router.get('/:videoId', (req,res)=>{
     const video = readVideos();
     const singleVid = video.find((vid) => vid.id === req.params.videoId)
     res.json(singleVid)
 })
 
-router.post("/upload", (req,res) =>{
+router.post("/", (req,res) =>{
     const newVideo = {
         id: uuid(),
         title: req.body.title,
-        channel: req.body.channel,
+        channel: "John Baker",
         image: req.body.image,
         description: req.body.description,
         views: 0,
         likes: 0,
         duration: 0,
-        video: req.body.video,
         timestamp: Date.now(),
         comments:[{}]
     };
