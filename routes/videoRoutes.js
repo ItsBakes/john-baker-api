@@ -34,8 +34,8 @@ router.post("/", (req,res) =>{
         id: uuid(),
         title: req.body.title,
         channel: "John Baker",
-        image: req.body.image,
         description: req.body.description,
+        image: "http://localhost:8080/public/images/Upload-video-preview.jpg",
         views: 0,
         likes: 0,
         duration: 0,
@@ -44,7 +44,7 @@ router.post("/", (req,res) =>{
     };
     const videos = readVideos();
     videos.push(newVideo);
-    fs.writeFileSync("./data/video-details.json", json.stringify(videos));
+    fs.writeFileSync("./data/video-details.json", JSON.stringify(videos));
     res.status(201).json(newVideo)
 })
 
